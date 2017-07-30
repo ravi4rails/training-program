@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'home/index'
+  root 'home#index'
   namespace :admins do
     resources :courses
   end

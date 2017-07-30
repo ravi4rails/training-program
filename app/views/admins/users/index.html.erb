@@ -1,0 +1,28 @@
+<div class="well">
+  <h1 class="text-center">User List</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Contact</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.full_name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.contact %></td>
+          <td><%= user.role %></td>
+          <td><%= link_to "Edit", edit_users_admins_user_path(user), class: "btn btn-warning btn-xs" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

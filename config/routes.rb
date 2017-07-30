@@ -1,8 +1,19 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: {sessions: "users/sessions", registrations: "users/registrations", passwords: "users/passwords", confirmations: "users/confirmations", unlocks: "users/unlocks"}
   get 'home/index'
   root 'home#index'
   namespace :admins do
     resources :courses
+    resources :users do
+      collection do
+        get :new_users
+        post :create_users
+      end
+      member do
+        get :edit_users
+        patch :update_users
+      end
+    end
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

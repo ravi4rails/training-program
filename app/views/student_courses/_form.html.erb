@@ -1,0 +1,41 @@
+<%= form_for @student_course, :html => { :class => "form-horizontal student_course" } do |f| %>
+
+  <% if @student_course.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@student_course.errors.count, "error") %> prohibited this student_course from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @student_course.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :user_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.select :user_id, options_for_select(User.all.collect {|p| [ p.full_name, p.id ] },(f.object.try(:user_id))),{prompt: 'Select Student'}, { :class => 'form-control'} %>
+    </div>
+    <%=f.error_span(:user_id) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :course_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.select :course_id, options_for_select(Course.all.collect {|p| [ p.name, p.id ] },(f.object.try(:course_id))),{prompt: 'Select Course'}, { :class => 'form-control'} %>
+    </div>
+    <%=f.error_span(:course_id) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                student_courses_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>

@@ -1,5 +1,5 @@
 class Admins::CoursesController < ApplicationController
-  load_and_authorize_resource
+  # load_and_authorize_resource
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   # GET /courses

@@ -1,3 +1,33 @@
 <div class="well">
   <h1 class="text-center"><%= @course.name%></h1>
 </div>
+<div class="col-md-8">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">Course Details</h3>
+    </div>
+    <div class="panel-body">
+      <%= @course.course_details.html_safe %>
+    </div>
+  </div>
+</div>
+<div class="col-md-4">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">Course Fee</h3>
+    </div>
+    <div class="panel-body">
+      <h5><strong>Rs. <%= @course.course_fee %></strong></h5>
+      <h5><strong>Payble in Two Installments</strong></h5>
+    </div>
+  </div>
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">Course Duration</h3>
+    </div>
+    <div class="panel-body">
+      <h5><strong><%= @course.course_duration %> Months</strong></h5>
+      <h5><strong>2 Hrs/Day</strong></h5>
+    </div>
+  </div>
+</div>

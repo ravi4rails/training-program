@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {sessions: "users/sessions", registrations: "users/registrations", passwords: "users/passwords", confirmations: "users/confirmations", unlocks: "users/unlocks"}
   get 'home/index'
   root 'home#index'
+  resources :courses, only: [:index, :show]
   namespace :admins do
     resources :courses
     resources :users do

@@ -60,4 +60,5 @@ gem 'cancancan', '~> 2.0'
 gem 'font-awesome-rails'
 gem 'friendly_id', '~> 5.1.0'
 gem 'ckeditor'
+gem 'ransack'
 

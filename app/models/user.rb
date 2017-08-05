@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:login]
 
+  has_many :student_courses
+  has_many :courses, through: :student_courses
+
   ROLES = %w[admin student].freeze
 
   def full_name

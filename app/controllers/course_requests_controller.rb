@@ -14,6 +14,7 @@ class CourseRequestsController < ApplicationController
 
   # GET /course_requests/new
   def new
+    @course = Course.find(params[:course_id])
     @course_request = CourseRequest.new
   end
 
@@ -28,7 +29,7 @@ class CourseRequestsController < ApplicationController
 
     respond_to do |format|
       if @course_request.save
-        format.html { redirect_to @course_request, notice: 'Course request was successfully created.' }
+        format.html { redirect_to course_path(@course_request.course), notice: "Hi! #{@course_request.requester_name} we have received your request. Please check your inbox. Thanks for showing your interest." }
         format.json { render :show, status: :created, location: @course_request }
       else
         format.html { render :new }

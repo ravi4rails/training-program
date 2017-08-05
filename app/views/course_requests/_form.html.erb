@@ -1,33 +1,35 @@
 <%= form_for(@course_request) do |f| %>
-  <% if @course_request.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@course_request.errors.count, "error") %> prohibited this course_request from being saved:</h2>
+  <div class="modal-body">
+    <% if @course_request.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@course_request.errors.count, "error") %> prohibited this course_request from being saved:</h2>
 
-      <ul>
-      <% @course_request.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @course_request.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= f.hidden_field :course_id, value: @course.id %>
+    <div class="form-group">
+      <%= f.text_field :requester_name, class: "form-control", placeholder: "Write Your Name Here" %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :requester_name %><br>
-    <%= f.text_field :requester_name %>
+    <div class="form-group">
+      <%= f.text_field :requester_email, class: "form-control", placeholder: "Write Your Email Here" %>
+    </div>
+    <div class="form-group">
+      <%= f.text_field :requester_contact, class: "form-control", placeholder: "Write Your Contact Here" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :requester_email %><br>
-    <%= f.text_field :requester_email %>
-  </div>
-  <div class="field">
-    <%= f.label :requester_contact %><br>
-    <%= f.text_field :requester_contact %>
-  </div>
-  <div class="field">
-    <%= f.label :course_id %><br>
-    <%= f.text_field :course_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="modal-footer">
+    <div class="row">
+      <div class="col-md-6">
+        <button type="button" class="btn btn-lg btn-warning btn-block" data-dismiss="modal">Not Now</button>
+      </div>
+      <div class="col-md-6">
+        <%= f.submit "Submit Request", class: "btn btn-lg btn-primary btn-block" %>
+      </div>
+    </div>
   </div>
 <% end %>

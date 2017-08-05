@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :course_requests
   resources :student_courses
   devise_for :users, controllers: {sessions: "users/sessions", registrations: "users/registrations", passwords: "users/passwords", confirmations: "users/confirmations", unlocks: "users/unlocks"}
   get 'home/index'

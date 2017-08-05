@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Requester name:</strong>
+  <%= @course_request.requester_name %>
+</p>
+
+<p>
+  <strong>Requester email:</strong>
+  <%= @course_request.requester_email %>
+</p>
+
+<p>
+  <strong>Requester contact:</strong>
+  <%= @course_request.requester_contact %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @course_request.course %>
+</p>
+
+<%= link_to 'Edit', edit_course_request_path(@course_request) %> |
+<%= link_to 'Back', course_requests_path %>
